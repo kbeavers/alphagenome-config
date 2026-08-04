@@ -29,8 +29,7 @@ Stampede3 apps path may diverge). The `run_alphagenome` wrappers are otherwise i
 
 - **Built from upstream, no fork.** The image clones `google-deepmind/alphagenome_research` at a
   pinned tag and applies exactly two TACC-specific changes in the Dockerfile:
-  1. `jax[cuda13]<0.11.0` — upstream pins a bare (CPU) `jax`; we install the CUDA 13 GPU wheels
-     (this is the same delta as eriksf's `update-jax` branch).
+  1. `jax[cuda13]<0.11.0` — upstream pins a bare (CPU) `jax`; we install the CUDA 13 GPU wheels.
   2. On **x86_64 only**, swap `tensorflow` → `tensorflow-cpu` (see Gotchas).
 - **JAX does the GPU work; TensorFlow only reads data (on CPU).** Model compute, `predict_variant`,
   etc. are all JAX on the GPU. TF is a data-loading dependency and never needs the GPU here.
